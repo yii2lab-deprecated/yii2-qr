@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\qr\entities;
+namespace yii2lab\qr\domain\entities;
 
 use yii2lab\domain\BaseEntity;
 use Yii;

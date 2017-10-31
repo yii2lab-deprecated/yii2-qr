@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\qr\repositories\file;
+namespace yii2lab\qr\domain\repositories\file;
 
-use yii2lab\qr\entities\QrEntity;
+use yii2lab\qr\domain\entities\QrEntity;
 use yii2lab\domain\repositories\FileRepository;
 use dosamigos\qrcode\lib\Enum;
 use dosamigos\qrcode\QrCode;

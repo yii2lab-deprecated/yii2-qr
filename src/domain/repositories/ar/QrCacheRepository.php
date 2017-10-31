@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\qr\repositories\ar;
+namespace yii2lab\qr\domain\repositories\ar;
 
-use yii2lab\qr\entities\QrEntity;
+use yii2lab\qr\domain\entities\QrEntity;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\repositories\ActiveArRepository;
 use Yii;

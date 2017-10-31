@@ -1,5 +1,5 @@
 <?php
-namespace yii2lab\qr\models;
+namespace yii2lab\qr\domain\models;
 
 use paulzi\jsonBehavior\JsonBehavior;
 use yii\db\ActiveRecord;

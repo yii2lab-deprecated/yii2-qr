@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\qr\services;
+namespace yii2lab\qr\domain\services;
 
 use yii2lab\domain\services\ActiveBaseService;
 use yii\web\NotFoundHttpException;

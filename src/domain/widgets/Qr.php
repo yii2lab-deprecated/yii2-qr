@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\qr\widgets;
+namespace yii2lab\qr\domain\widgets;
 
 use Yii;
 use yii\base\Widget;
