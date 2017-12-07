@@ -2,7 +2,7 @@
 
 namespace yii2lab\qr\domain;
 
-use common\helpers\Driver;
+use yii2lab\domain\enums\Driver;
 
 class Domain extends \yii2lab\domain\Domain {
 	
