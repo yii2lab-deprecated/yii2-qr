@@ -20,36 +20,12 @@ class Qr extends Widget
 	{
 		$qr = Yii::$app->qr->generator->generate($this->text);
 		$this->type = !empty($this->type) ? $this->type : self::TYPE_IMG;
-		$method = 'render' . ucfirst($this->type);
-		$this->$method($qr);
-	}
-
-	private function renderImg($qr) {
-		?>
-		<img src="<?= $qr->url ?>" />
-		<?php
-	}
-
-	private function renderTable($qr) {
-		?>
-		<table cellspacing="0" cellpadding="0" style="padding: 0; margin: <?= $this->size * $this->margin ?>px">
-		<?php
-		foreach($qr->matrix as $line) {
-			echo '<tr>';
-			$this->renderTableLine($line);
-			echo '</tr>';
-		}
-		?>
-		</table>
-		<?php
-	}
-
-	private function renderTableLine($line) {
-		foreach($line as $cell) {
-			echo '<td height="' . $this->size . '" width="' . $this->size . '" style="line-height: 0; margin: 0; padding: 0; background-color: ' . ($cell ? 'black' : '') . '">';
-			echo '<small>&nbsp;</small>';
-			echo '</td>';
-		}
+		echo $this->render($this->type, [
+			'url' => $qr->url,
+			'matrix' => $qr->matrix,
+			'size' => $this->size,
+			'margin' => $this->margin,
+		]);
 	}
 
 }
