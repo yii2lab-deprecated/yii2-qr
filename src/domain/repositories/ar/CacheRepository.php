@@ -2,13 +2,16 @@
 
 namespace yii2lab\qr\domain\repositories\ar;
 
+use yii2lab\domain\interfaces\repositories\ModifyInterface;
+use yii2lab\domain\interfaces\repositories\ReadInterface;
 use yii2lab\qr\domain\entities\QrEntity;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\repositories\ActiveArRepository;
 use Yii;
 use yii\db\ActiveRecord;
+use yii2lab\qr\domain\interfaces\repositories\CacheInterface;
 
-class QrCacheRepository extends ActiveArRepository {
+class CacheRepository extends ActiveArRepository implements ReadInterface, ModifyInterface, CacheInterface {
 	
 	protected $primaryKey = 'hash';
 	

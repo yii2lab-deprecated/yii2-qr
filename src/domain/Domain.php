@@ -13,7 +13,7 @@ class Domain extends \yii2lab\domain\Domain {
 			],
 			'repositories' => [
 				'generator' => Driver::FILE,
-				'qrCache' => Driver::ACTIVE_RECORD,
+				'cache' => Driver::ACTIVE_RECORD,
 			],
 		];
 	}

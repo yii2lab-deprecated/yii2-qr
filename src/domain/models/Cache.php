@@ -4,7 +4,7 @@ namespace yii2lab\qr\domain\models;
 use paulzi\jsonBehavior\JsonBehavior;
 use yii\db\ActiveRecord;
 
-class QrCache extends ActiveRecord
+class Cache extends ActiveRecord
 {
 
 	/**
