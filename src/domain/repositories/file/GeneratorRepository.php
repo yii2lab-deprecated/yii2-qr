@@ -6,8 +6,9 @@ use yii2lab\qr\domain\entities\QrEntity;
 use yii2lab\domain\repositories\FileRepository;
 use dosamigos\qrcode\lib\Enum;
 use dosamigos\qrcode\QrCode;
+use yii2lab\qr\domain\interfaces\repositories\GeneratorInterface;
 
-class GeneratorRepository extends FileRepository {
+class GeneratorRepository extends FileRepository implements GeneratorInterface {
 	
 	public $size = 5;
 	public $margin = 1;
@@ -27,7 +28,7 @@ class GeneratorRepository extends FileRepository {
 		return $entity;
 	}
 	
-	public function isExists($text) {
+	private function isExists($text) {
 		$fileName = $this->getFileNameByText($text);
 		return file_exists($fileName);
 	}
