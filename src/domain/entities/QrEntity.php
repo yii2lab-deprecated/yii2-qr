@@ -6,6 +6,18 @@ use yii2lab\domain\BaseEntity;
 use Yii;
 use yii\helpers\FileHelper;
 
+/**
+ * Class QrEntity
+ *
+ * @package yii2lab\qr\domain\entities
+ *
+ * @property string $text
+ * @property string $hash
+ * @property array $matrix
+ * @property string $url
+ * @property string $path
+ *
+ */
 class QrEntity extends BaseEntity {
 	
 	protected $text;

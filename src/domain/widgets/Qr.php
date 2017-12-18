@@ -4,11 +4,13 @@ namespace yii2lab\qr\domain\widgets;
 
 use Yii;
 use yii\base\Widget;
+use yii2lab\widgets\Img;
 
 class Qr extends Widget
 {
 
-	const TYPE_IMG = 'img';
+	const TYPE_IMG = Img::TYPE_IMG;
+	const TYPE_IMG_DATA = Img::TYPE_IMG_DATA;
 	const TYPE_TABLE = 'table';
 
 	public $type = self::TYPE_IMG;
@@ -25,6 +27,7 @@ class Qr extends Widget
 			'matrix' => $qr->matrix,
 			'size' => $this->size,
 			'margin' => $this->margin,
+			'qr' => $qr,
 		]);
 	}
 
