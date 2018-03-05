@@ -30,7 +30,7 @@ class CacheRepository extends ActiveArRepository implements ReadInterface, Modif
 	public function insert(BaseEntity $entity) {
 		//$this->findUnique($entity);
 		/** @var ActiveRecord $model */
-		$model = Yii::createObject($this->model->className());
+		$model = Yii::createObject(get_class($this->model));
 		$model->hash = $entity->hash;
 		$model->text = $entity->text;
 		$model->matrix = $entity->matrix;
