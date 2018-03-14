@@ -19,7 +19,7 @@ class Cache extends ActiveRecord
 	{
 		return [
 			'rulesJson' => [
-				'class' => JsonBehavior::className(),
+				'class' => JsonBehavior::class,
 				'attributes' => ['matrix'],
 			],
 		];

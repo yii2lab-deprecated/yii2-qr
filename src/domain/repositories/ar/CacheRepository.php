@@ -38,7 +38,7 @@ class CacheRepository extends ActiveArRepository implements ReadInterface, Modif
 	}
 	
 	public function forgeEntity($data, $class = null) {
-		return parent::forgeEntity($data, QrEntity::className());
+		return parent::forgeEntity($data, QrEntity::class);
 	}
 	
 }
