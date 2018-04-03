@@ -20,7 +20,7 @@ class Qr extends Widget
 
 	public function run()
 	{
-		$qr = Yii::$app->qr->generator->generate($this->text);
+		$qr = Yii::$domain->qr->generator->generate($this->text);
 		$this->type = !empty($this->type) ? $this->type : self::TYPE_IMG;
 		echo $this->render($this->type, [
 			'url' => $qr->url,
