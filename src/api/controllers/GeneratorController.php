@@ -2,12 +2,12 @@
 
 namespace yii2lab\qr\api\controllers;
 
-use yii2lab\domain\rest\Controller;
+use yii2lab\rest\domain\rest\Controller;
 
 class GeneratorController extends Controller
 {
 	
-	public $serviceName = 'qr.generator';
+	public $service = 'qr.generator';
 	
 	public function actions() {
 		$result['generate'] = [
