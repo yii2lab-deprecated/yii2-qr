@@ -60,7 +60,8 @@ class QrEntity extends BaseEntity {
 	}
 
     public function getPath() {
-        $pathName = \Yii::$domain->summary->summary->oneByName(SummaryEnum::QR_CODE_URL);
+        $summartEntity = \Yii::$domain->summary->static->oneById(SummaryEnum::QR_CODE_URL);
+        $pathName = $summartEntity->value;
         $relativePath = $this->getRelativePathByHash($this->getHash());
         $fileName = $this->getHash() . DOT . $this->format;
         return $pathName . SL . $relativePath . SL . $fileName;
