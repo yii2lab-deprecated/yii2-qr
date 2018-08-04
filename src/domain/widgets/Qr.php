@@ -24,7 +24,7 @@ class Qr extends Widget
 		$this->type = !empty($this->type) ? $this->type : self::TYPE_IMG;
 		echo $this->render($this->type, [
 			'url' => $qr->url,
-			'matrix' => $qr->matrix,
+			//'matrix' => $qr->matrix,
 			'size' => $this->size,
 			'margin' => $this->margin,
 			'qr' => $qr,

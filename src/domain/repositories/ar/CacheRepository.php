@@ -22,20 +22,12 @@ class CacheRepository extends ActiveArRepository implements CrudInterface, Cache
 	
 	public function oneByText($text) {
 		$hash = hash('crc32b', $text);
-		$entity = $this->oneById($hash);
-		return $entity;
+        $entity = new QrEntity([
+            'text' => $text,
+        ]);
+        return $this->oneById($entity->hash);
 	}
-	
-	public function insert(BaseEntity $entity) {
-		//$this->findUnique($entity);
-		/** @var ActiveRecord $model */
-		$model = Yii::createObject(get_class($this->model));
-		$model->hash = $entity->hash;
-		$model->text = $entity->text;
-		$model->matrix = $entity->matrix;
-		$this->saveModel($model);
-	}
-	
+
 	public function forgeEntity($data, $class = null) {
 		return parent::forgeEntity($data, QrEntity::class);
 	}

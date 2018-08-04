@@ -2,9 +2,12 @@
 
 namespace yii2lab\qr\domain\entities;
 
+use yii\base\InvalidArgumentException;
+use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\domain\BaseEntity;
 use Yii;
 use yii\helpers\FileHelper;
+use yii2lab\qr\domain\enums\SummaryEnum;
 
 /**
  * Class QrEntity
@@ -13,47 +16,60 @@ use yii\helpers\FileHelper;
  *
  * @property string $text
  * @property string $hash
- * @property array $matrix
  * @property string $url
  * @property string $path
- *
+ * @property string $hash_algo
  */
 class QrEntity extends BaseEntity {
-	
+
 	protected $text;
-	protected $hash;
-	protected $matrix = [];
+    protected $format = 'png';
+    protected $hash_algo = 'crc32b';
 	
 	public function rules()
 	{
 		return [
-			[['hash', 'text'], 'trim'],
-			[['hash', 'text'], 'required'],
+			[['text', 'format', 'hash_algo'], 'trim'],
+			[['text', 'format', 'hash_algo'], 'required'],
 		];
 	}
-	
-	public function getUrl() {
-		return env('servers.static.domain') . $this->genFilePath($this->hash);
-	}
-	
-	public function getPath() {
-		$publicPath = env('servers.static.publicPath');
-		$path = Yii::getAlias($publicPath) . $this->genFilePath($this->hash);
-		$path = FileHelper::normalizePath($path);
-		return Yii::getAlias($path);
-	}
-	
+
+	public function setHashAlgo($value) {
+        if(!in_array($value, hash_algos())) {
+            throw new InvalidArgumentException('Invalid hash algo');
+        }
+        $this->hash_algo = $value;
+    }
+
+    public function getHash() {
+        $hash = hash($this->hash_algo, $this->text);
+        return $hash;
+    }
+
+    public function getUrl() {
+        return EnvService::getStaticUrl($this->getPath());
+    }
+
 	public function fields() {
 		return [
 			'text',
 			'hash',
 			'url',
-			//'matrix',
+            //'path',
 		];
 	}
-	
-	private function genFilePath($hash) {
-		return param('static.path.qr') . SL . $hash . '.png';
-	}
-	
+
+    public function getPath() {
+        $pathName = \Yii::$domain->summary->summary->oneByName(SummaryEnum::QR_CODE_URL);
+        $relativePath = $this->getRelativePathByHash($this->getHash());
+        $fileName = $this->getHash() . DOT . $this->format;
+        return $pathName . SL . $relativePath . SL . $fileName;
+    }
+
+    private function getRelativePathByHash($hash) {
+        $path = substr($hash, 0, 2);
+        $path .= SL . substr($hash, 2, 2);
+        return $path;
+    }
+
 }
