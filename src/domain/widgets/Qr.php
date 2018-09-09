@@ -4,7 +4,7 @@ namespace yii2lab\qr\domain\widgets;
 
 use Yii;
 use yii\base\Widget;
-use yii2lab\widgets\Img;
+use yii2lab\extension\widget\Img;
 
 class Qr extends Widget
 {

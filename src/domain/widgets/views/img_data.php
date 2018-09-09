@@ -5,7 +5,7 @@
  * @var $qr \yii2lab\qr\domain\entities\QrEntity
 */
 
-use yii2lab\widgets\Img;
+use yii2lab\extension\widget\Img;
 
 ?>
 
