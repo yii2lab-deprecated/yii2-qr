@@ -5,7 +5,7 @@ namespace yii2lab\qr\domain\repositories\file;
 use yii2lab\domain\BaseEntity;
 use yii2lab\extension\flySystem\repositories\base\BaseFlyRepository;
 use yii2lab\helpers\TempHelper;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii2lab\qr\domain\entities\QrEntity;
 use yii2lab\domain\repositories\BaseRepository;
 use dosamigos\qrcode\lib\Enum;
